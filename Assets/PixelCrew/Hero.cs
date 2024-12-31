@@ -5,34 +5,46 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    private float _directionX;
-    private float _directionY;
+    [SerializeField] private float _jumpSpeed;
 
-    public void SetDirectionX(float directionX)
+    [SerializeField] private LayerCheck _groundCheck;
+
+    private Rigidbody2D _rigidbody;
+    private Vector2 _direction;
+
+    private void Awake()
     {
-        _directionX = directionX;
-    }
-    public void SetDirectionY(float directionY)
-    {
-        _directionY = directionY;
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void SetDirection(Vector2 direction)
     {
-        if (_directionX != 0)
+        _direction = direction;
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
+
+        var isJumping = _direction.y > 0;
+        if(isJumping)
         {
-            var delta = _directionX * _speed * Time.deltaTime;
-            var newXPosition = transform.position.x + delta;
-            transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
-        }
-
-        if (_directionY != 0)
+            if(IsGrounded())
+            {
+                _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
+            }
+            
+        } else if (_rigidbody.velocity.y > 0)
         {
-            var delta = _directionY * _speed * Time.deltaTime;
-            var newXPosition = transform.position.y + delta;
-            transform.position = new Vector3(transform.position.x, newXPosition, transform.position.z);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * 0.5f);
         }
     }
+
+    private bool IsGrounded()
+    {
+        return _groundCheck.IsTouchingLayer;
+    }
+
 
     public void SaySomething()
     {

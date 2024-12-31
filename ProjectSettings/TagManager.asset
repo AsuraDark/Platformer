@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - layer1
-  - layer2
+  - Ground
+  - 
   - 
   - 
   - 
@@ -44,15 +44,15 @@ TagManager:
   - name: Background
     uniqueID: 891871331
     locked: 0
-  - name: Decor
+  - name: DecorBack
     uniqueID: 4216762437
     locked: 0
   - name: Level
     uniqueID: 2444788365
     locked: 0
-  - name: Hero
+  - name: Props
     uniqueID: 7529727
     locked: 0
-  - name: Props
+  - name: Creatures
     uniqueID: 4044106969
     locked: 0
