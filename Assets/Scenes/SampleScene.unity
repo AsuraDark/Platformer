@@ -1954,7 +1954,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 7529727
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6146700129834819302, guid: 661c126990816e54aaddf6dc71949858,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2677,9 +2677,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1831016789}
   - component: {fileID: 1831016788}
-  - component: {fileID: 1831016787}
   - component: {fileID: 1831016786}
-  m_Layer: 0
+  - component: {fileID: 1831016787}
+  m_Layer: 8
   m_Name: Barrel_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2702,13 +2702,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 6f9ab44ad097c404783c9d9656177204, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &1831016787
-CapsuleCollider2D:
+--- !u!61 &1831016787
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2720,9 +2720,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0013638139, y: -0.06819272}
-  m_Size: {x: 0.75029624, y: 0.8566768}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.03125, y: 1}
+    newSize: {x: 1.03125, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7197704, y: 0.7178167}
+  m_EdgeRadius: 0
 --- !u!212 &1831016788
 SpriteRenderer:
   m_ObjectHideFlags: 0
