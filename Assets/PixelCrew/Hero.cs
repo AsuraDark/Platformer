@@ -11,7 +11,12 @@ namespace PixelCrew
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
         [SerializeField] private float _interactRadius;
-        
+
+        public float JumpSpeed
+        {
+            get => _jumpSpeed;
+            set => _jumpSpeed = _jumpSpeed * value;
+        }
         [SerializeField] private LayerMask _interactionLayer;
 
         [SerializeField] private LayerCheck _groundCheck;
@@ -29,6 +34,7 @@ namespace PixelCrew
         private bool _allowDoubleJump;
         private bool _isFall;
         private int _coins;
+        private float jumpSpeed;
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsRunning = Animator.StringToHash("is-running");
         private static readonly int VerticalVelociy = Animator.StringToHash("vertical-velocity");
@@ -100,10 +106,11 @@ namespace PixelCrew
             var isFalling = _rigidbody.velocity.y <= 0.001f;
             if (!isFalling) return yVelocity;
 
-            if(_isGrounded)
+            if (_isGrounded)
             {
                 yVelocity += _jumpSpeed;
-            } else if (_allowDoubleJump)
+            }
+            else if (_allowDoubleJump)
             {
                 yVelocity += _jumpSpeed;
                 _allowDoubleJump = false;
@@ -148,7 +155,7 @@ namespace PixelCrew
             if (_coins > 0)
             {
                 SpawnCoins();
-            }        
+            }
         }
 
         private void SpawnCoins()
@@ -166,9 +173,9 @@ namespace PixelCrew
         public void Interact()
         {
             var size = Physics2D.OverlapCircleNonAlloc(
-                transform.position, 
-                _interactRadius, 
-                _interactResult, 
+                transform.position,
+                _interactRadius,
+                _interactResult,
                 _interactionLayer);
 
             for (int i = 0; i < size; i++)
