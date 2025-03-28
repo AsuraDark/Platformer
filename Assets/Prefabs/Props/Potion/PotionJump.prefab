@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5041548746380993140}
   - component: {fileID: 5041548746380993143}
-  - component: {fileID: 5041548746380993142}
+  - component: {fileID: 1266789246664882898}
   - component: {fileID: 5041548746380993137}
-  - component: {fileID: 5041548746380993141}
-  - component: {fileID: 5041548746380993136}
   - component: {fileID: 5041548746380993139}
+  - component: {fileID: 2671327440244270311}
+  - component: {fileID: 200279283208389773}
   m_Layer: 0
   m_Name: PotionJump
   m_TagString: Untagged
@@ -87,25 +87,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5041548746380993142
-Animator:
-  serializedVersion: 3
+--- !u!114 &1266789246664882898
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5041548746380993138}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0dbb42fb7a525748abe82f5e0e900aa, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4e1a5b0680d8841b2d4117175963f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _name: idle
+    _sprites:
+    - {fileID: 1185527514606905908, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: -1061600653231999548, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: -3065595510956808684, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: 6997616985800771554, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: 8618505411793156745, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: -1972361127685065434, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: -5226445311955339714, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - _name: destroy
+    _sprites:
+    - {fileID: 6040734443530017722, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: 8167133005111728920, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: 2014349484240403859, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    - {fileID: 6326803469982491369, guid: efa3a71ef176c154bae4169d81891e50, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5041548746380993137}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!61 &5041548746380993137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +147,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.026150942, y: -0.10169828}
@@ -132,7 +163,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2619605, y: 0.45384717}
   m_EdgeRadius: 0
---- !u!114 &5041548746380993141
+--- !u!114 &5041548746380993139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,13 +172,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 5041548746380993138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12b433962ee5564a9a58a72fa98b4ee, type: 3}
+  m_Script: {fileID: 11500000, guid: f809a23fff6acf54a854b3f38d1207e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5041548746380993142}
-  _state: 1
-  _animationKey: is-useable
---- !u!114 &5041548746380993136
+  _value: 1.5
+  _duration: 5
+  _destroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 200279283208389773}
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: set_JumpSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2671327440244270311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5041548746380993138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a767d6bd5fae742a4aaee7d4e03439, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e5a4ae9542e5454ab4519fb37a66514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
@@ -174,18 +232,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5041548746380993141}
-        m_MethodName: Switch
-        m_Mode: 1
+      - m_Target: {fileID: 1266789246664882898}
+        m_MethodName: SetClip
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5041548746380993139
+--- !u!114 &200279283208389773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,22 +252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5041548746380993138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f809a23fff6acf54a854b3f38d1207e3, type: 3}
+  m_Script: {fileID: 11500000, guid: d8f015294982e094eade964b3a3e6702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 1.5
-  _duration: 5
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: set_JumpSpeed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _objectToDestroy: {fileID: 5041548746380993138}

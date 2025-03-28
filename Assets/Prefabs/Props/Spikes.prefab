@@ -127,7 +127,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5299033908972956066}
-        m_MethodName: ChangeHealth
+        m_MethodName: Apply
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -149,5 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90439ce445c03084d84afe8b29e01125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDamage: 1
-  _value: 1
+  _hpDelta: -1
