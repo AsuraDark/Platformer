@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 namespace PixelCrew.Components
 {
@@ -11,10 +12,12 @@ namespace PixelCrew.Components
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDie;
+        [SerializeField] private HealthChangeEvent _onChange;
 
         public void ModifyHealth(int healDelta)
         {
             _health += healDelta;
+            _onChange?.Invoke(_health);
             if(healDelta < 0)
             {
                 _onDamage?.Invoke();
@@ -27,6 +30,16 @@ namespace PixelCrew.Components
             {
                 _onDie?.Invoke();
             }
+        }
+        public void SetHealth(int health)
+        {
+            _health = health;
+        }
+
+        [Serializable]
+        public class HealthChangeEvent : UnityEvent<int>
+        {
+
         }
     }
 }
