@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelCrew
 {
     public class LayerCheck : MonoBehaviour
     {
-        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _layer;
+        [SerializeField] private bool _isTouchingLayer;
         private Collider2D _collider;
 
-        public bool IsTouchingLayer;
+        public bool IsTouchingLayer => _isTouchingLayer;
 
         private void Awake()
         {
@@ -18,12 +17,12 @@ namespace PixelCrew
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(_groundLayer);
+            _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(_groundLayer);
+            _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
     }
 }
