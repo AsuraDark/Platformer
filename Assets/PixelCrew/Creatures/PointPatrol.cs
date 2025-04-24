@@ -22,15 +22,15 @@ namespace PixelCrew.Creatures
             {
                 if (IsOnPoint())
                 {
-                    _destinationPointIndex = (int)Mathf.Repeat(_destinationPointIndex + 1, _points.Length);
+                    _destinationPointIndex = (int) Mathf.Repeat(_destinationPointIndex + 1, _points.Length);
                 }
-            }
 
-            var direction = _points[_destinationPointIndex].position - transform.position;
-            direction.y = 0;
-            _creature.SetDirection(direction.normalized);
+                var direction = _points[_destinationPointIndex].position - transform.position;
+                direction.y = 0;
+                _creature.SetDirection(direction.normalized);
 
-            yield return null;
+                yield return null;
+            }   
         }
 
         private bool IsOnPoint()

@@ -93,7 +93,7 @@ namespace PixelCrew.Creatures
 
         private void StartState(IEnumerator coroutine)
         {
-            _creature.SetDirection(Vector3.zero);
+            _creature.SetDirection(Vector2.zero);
 
             if (_current != null)
                 StopCoroutine(_current);
