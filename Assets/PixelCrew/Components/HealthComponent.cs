@@ -16,6 +16,8 @@ namespace PixelCrew.Components
 
         public void ModifyHealth(int healDelta)
         {
+            if (_health <= 0) return;
+
             _health += healDelta;
             _onChange?.Invoke(_health);
             if(healDelta < 0)

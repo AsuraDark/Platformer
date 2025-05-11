@@ -7,7 +7,7 @@ namespace PixelCrew.Components
     public class SpawnListComponent : MonoBehaviour
     {
         [SerializeField] private SpawnData[] _spawners;
-
+        
         public void Spawn(string id)
         {
             var spawner = _spawners.FirstOrDefault(element => element.id == id);
@@ -20,6 +20,8 @@ namespace PixelCrew.Components
             public string id;
             public SpawnComponent Component;
         }
+
+        
     }
 
 }

@@ -61,7 +61,7 @@ namespace PixelCrew.Creatures
             Animator.SetBool(IsRunning, Direction.x != 0);
             Animator.SetFloat(VerticalVelociy, Rigidbody.velocity.y);
 
-            UpdateSpriteDirection();
+            UpdateSpriteDirection(Direction);
         }
         protected virtual float CalculateYVelocity()
         {
@@ -99,7 +99,7 @@ namespace PixelCrew.Creatures
             return yVelocity;
         }
 
-        private void UpdateSpriteDirection()
+        public void UpdateSpriteDirection(Vector2 direction)
         {
             var multiplier = _invertScale ? -1 : 1;
             if (Direction.x > 0)

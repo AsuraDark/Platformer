@@ -88,6 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _action:
     m_PersistentCalls:
       m_Calls:
@@ -147,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 5338792329716581393}
   _prefab: {fileID: 816314217125207657, guid: 3ac5a9f2abb429e42a8994eaa90338cd, type: 3}
+  _invertScale: 0
 --- !u!1 &7383988876148469685
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab962d9ab936f0409e8658a63652440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.45
+  _radius: 0.46
   _mask:
     serializedVersion: 2
     m_Bits: 4096
@@ -241,7 +245,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.38
 --- !u!114 &65807358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988876203357321}
   _prefab: {fileID: 816314217125207657, guid: e053eff6d15849b49b13b2686c4c9324, type: 3}
+  _invertScale: 0
 --- !u!1 &7383988876226983177
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7383988876226983177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.362, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.362, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7383988877132864954}
@@ -348,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988876226983178}
   _prefab: {fileID: 2554025023731977619, guid: 99e1e6e8bdab1a340bd166452aa5aa46, type: 3}
+  _invertScale: 1
 --- !u!1 &7383988877077301745
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +502,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -250860327
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4462fd05233133f448496d74a05a39cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -761,3 +767,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 163271452975428472}
   _prefab: {fileID: 2554025023731977619, guid: 23d8776e07986324b8e286a3b0d51fdd, type: 3}
+  _invertScale: 0
