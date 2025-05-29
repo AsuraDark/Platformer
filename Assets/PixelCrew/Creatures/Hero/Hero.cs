@@ -46,12 +46,12 @@ namespace PixelCrew.Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             var health = GetComponent<HealthComponent>();
 
-            health.SetHealth(_session.Data.HP);
+            health.SetHealth(_session.Data.Hp);
             UpdateHeroWeapon();
         }
         public void OnHealthChanged(int currentHelth)
         {
-            _session.Data.HP = currentHelth;
+            _session.Data.Hp = currentHelth;
         }
 
         
@@ -172,7 +172,7 @@ namespace PixelCrew.Creatures.Hero
         public void Death()
         {
             _session.Data.Coins = _session.FirstData.Coins;
-            _session.Data.HP = _session.FirstData.HP;
+            _session.Data.Hp = _session.FirstData.Hp;
             _session.Data.IsArmed = _session.FirstData.IsArmed;
         }
 
