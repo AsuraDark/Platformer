@@ -1053,6 +1053,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1705064559}
     m_Modifications:
+    - target: {fileID: 935953077, guid: 05f7951b19b4d7e41afbee046586b27e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5950063712071489173, guid: 05f7951b19b4d7e41afbee046586b27e,
         type: 3}
       propertyPath: m_Name
@@ -1066,7 +1070,7 @@ PrefabInstance:
     - target: {fileID: 5950063712071489176, guid: 05f7951b19b4d7e41afbee046586b27e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.79
+      value: -17.54
       objectReference: {fileID: 0}
     - target: {fileID: 5950063712071489176, guid: 05f7951b19b4d7e41afbee046586b27e,
         type: 3}
@@ -1112,6 +1116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950063712071489178, guid: 05f7951b19b4d7e41afbee046586b27e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f7951b19b4d7e41afbee046586b27e, type: 3}
@@ -1408,7 +1417,7 @@ MonoBehaviour:
     Action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1101621981}
+        - m_Target: {fileID: 0}
           m_MethodName: OnTriggerEnter2D
           m_Mode: 2
           m_Arguments:
@@ -1554,13 +1563,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    Coins: 0
-    HP: 10
-    IsArmed: 1
+    _inventory:
+      _inventory: []
+    Hp: 30
   _firstData:
-    Coins: 0
-    HP: 10
-    IsArmed: 1
+    _inventory:
+      _inventory: []
+    Hp: 0
 --- !u!4 &1075933694
 Transform:
   m_ObjectHideFlags: 0
@@ -1586,11 +1595,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hero
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864952, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7383988877132864954, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
         type: 3}
@@ -1655,18 +1659,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1101621978}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1101621981 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7383988877132864896, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1101621978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa78e95cf50f9184cac4ca48b4b998e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1135528867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3666,7 +3658,7 @@ PrefabInstance:
     - target: {fileID: 6477197235367464445, guid: 4a3effe2931ad4f4f9e8c56cbd118614,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.04
+      value: -10.04
       objectReference: {fileID: 0}
     - target: {fileID: 6477197235367464445, guid: 4a3effe2931ad4f4f9e8c56cbd118614,
         type: 3}

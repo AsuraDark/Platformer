@@ -5338,7 +5338,6 @@ GameObject:
   - component: {fileID: 7383988877132864957}
   - component: {fileID: 7383988877132864958}
   - component: {fileID: 7383988877132864959}
-  - component: {fileID: 7383988877132864896}
   - component: {fileID: 7383988877132864897}
   - component: {fileID: 7383988877132864898}
   - component: {fileID: 6883814728423753280}
@@ -5466,7 +5465,6 @@ MonoBehaviour:
   _armed: {fileID: 9100000, guid: 34d7b18503de78848b1a0b42a7c0f4e3, type: 2}
   _disarmed: {fileID: 9100000, guid: 96aff48b4797741418bde234212d0c03, type: 2}
   _hitParticles: {fileID: 7383988875956097920}
-  countSwords: 3
 --- !u!114 &7383988877132864957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5589,7 +5587,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: ba9b48101b78bed4ea30d66e8e330498, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -5610,34 +5608,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00055223703, y: 0.07999998}
   m_Size: {x: 0.591472, y: 0.8892554}
   m_Direction: 0
---- !u!114 &7383988877132864896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7383988877132864952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa78e95cf50f9184cac4ca48b4b998e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tagSilverCoin: Silver Coin
-  _tagGoldCoin: Gold Coin
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7383988877132864956}
-        m_MethodName: AddCoins
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &7383988877132864897
 Animator:
   serializedVersion: 3

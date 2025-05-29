@@ -7,11 +7,11 @@ namespace PixelCrew.Model.Data
     [Serializable]
     public class PlayerData
     {
-        [SerializeField] private InventoryData inventory;
+        [SerializeField] private InventoryData _inventory;
 
-        public int Coins;
         public int Hp;
-        public bool IsArmed;
+
+        public InventoryData Inventory => _inventory;
 
         public PlayerData Clone()
         {

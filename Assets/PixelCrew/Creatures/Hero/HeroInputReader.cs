@@ -39,5 +39,13 @@ namespace PixelCrew.Creatures.Hero
                 _hero.Throw();
             }
         }
+
+        public void OnUseHealthPotion(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _hero.UseHealthPotion();
+            }
+        }
     }
 }

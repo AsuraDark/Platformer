@@ -6,6 +6,7 @@ using UnityEngine;
 using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model;
+using System;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -31,8 +32,11 @@ namespace PixelCrew.Creatures.Hero
 
         private GameSession _session;
         private float _defaultGravityScale;
-
-        [SerializeField] private int countSwords;
+        private int CoinsCount => _session.Data.Inventory.Count("Coin");
+        private int SwordCount => _session.Data.Inventory.Count("Sword");
+        private int KeyCount => _session.Data.Inventory.Count("Key");
+        private int PotionHealthCount => _session.Data.Inventory.Count("PotionHealth");
+        private int _healOfPotion = 5;
 
         protected override void Awake()
         {
@@ -46,9 +50,25 @@ namespace PixelCrew.Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             var health = GetComponent<HealthComponent>();
 
+            _session.Data.Inventory.OnChanged += OnInventoryChanged;
+
             health.SetHealth(_session.Data.Hp);
             UpdateHeroWeapon();
+
+            _session.FirstData.Hp = _session.Data.Hp;
         }
+
+        private void OnDestroy()
+        {
+            _session.Data.Inventory.OnChanged -= OnInventoryChanged;
+        }
+
+        private void OnInventoryChanged(string id, int value)
+        {
+            if (id == "Sword")
+                UpdateHeroWeapon();
+        }
+
         public void OnHealthChanged(int currentHelth)
         {
             _session.Data.Hp = currentHelth;
@@ -104,17 +124,15 @@ namespace PixelCrew.Creatures.Hero
             return base.CalculateJumpVelocity(yVelocity);
         }
 
-
-        public void AddCoins(int coins)
+        public void AddInInventory(string id, int value)
         {
-            _session.Data.Coins += coins;
-            Debug.Log($"{coins} coins added. total coins: {_session.Data.Coins}");
+            _session.Data.Inventory.Add(id, value);
         }
 
         public override void TakeDamage()
         {
             base.TakeDamage();
-            if (_session.Data.Coins > 0)
+            if (CoinsCount > 0)
             {
                 SpawnCoins();
             }
@@ -122,8 +140,8 @@ namespace PixelCrew.Creatures.Hero
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
-            _session.Data.Coins -= numCoinsToDispose;
+            var numCoinsToDispose = Mathf.Min(CoinsCount, 5);
+            _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -151,29 +169,18 @@ namespace PixelCrew.Creatures.Hero
 
         public override void Attack()
         {
-            if (!_session.Data.IsArmed) return;
+            if (SwordCount <= 0) return;
 
             base.Attack();
         }
 
-       
-
-        public void ArmHero()
-        {
-            countSwords++;
-            _session.Data.IsArmed = true;
-            UpdateHeroWeapon();
-        }
-
         private void UpdateHeroWeapon()
         {
-            Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
+            Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _disarmed;
         }
         public void Death()
         {
-            _session.Data.Coins = _session.FirstData.Coins;
             _session.Data.Hp = _session.FirstData.Hp;
-            _session.Data.IsArmed = _session.FirstData.IsArmed;
         }
 
         public void OnDoThrow()
@@ -185,12 +192,22 @@ namespace PixelCrew.Creatures.Hero
         {
             if (_throwCooldown.IsReady)
             {
-                if (countSwords > 1) 
+                if (SwordCount > 1)     
                 {
-                    countSwords--;
+                    _session.Data.Inventory.Remove("Sword", 1);
                     Animator.SetTrigger(ThrowKey);
                     _throwCooldown.Reset();
                 }
+            }
+        }
+
+        public void UseHealthPotion()
+        {
+            var go = GetComponent<HealthComponent>();
+            if(PotionHealthCount > 0)
+            {
+                go.ModifyHealth(_healOfPotion);
+                _session.Data.Inventory.Remove("PotionHealth", 1);
             }
         }
     }

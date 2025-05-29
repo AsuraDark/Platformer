@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 920261898135674693}
   - component: {fileID: 920261898135674814}
   - component: {fileID: 3823246408496390634}
-  - component: {fileID: -7155263305236815179}
   - component: {fileID: 3838627708035225875}
+  - component: {fileID: 6032981531403743282}
+  - component: {fileID: -5214212983345953721}
   m_Layer: 14
   m_Name: GoldCoin
   m_TagString: Gold Coin
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frameRate: 10
   _clips:
-  - _name: 
+  - _name: idle
     _sprites:
     - {fileID: 6582046967323461550, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
     - {fileID: 1942777921290549423, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
@@ -142,6 +143,28 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
+  - _name: destroy
+    _sprites:
+    - {fileID: -4986890610287934012, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
+    - {fileID: 6143208460787649835, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
+    - {fileID: 7609282858266732271, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
+    - {fileID: -6288512792030432889, guid: 1b7ae3fd27061174c97165b3b9abf300, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 920261898135674693}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!50 &3823246408496390634
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +186,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-7155263305236815179
+--- !u!114 &3838627708035225875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920261898135674692}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1ccadb915084a4286e0c6ea0b9cd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frequency: 6
+  _amplitude: 0.15
+  randomize: 1
+--- !u!114 &6032981531403743282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920261898135674692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f349d2b9b9f72a44a512204209adb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _value: 10
+--- !u!114 &-5214212983345953721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,9 +231,20 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 920261898135674693}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 920261898135674814}
+        m_MethodName: SetClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 920261898135674811}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -190,18 +253,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3838627708035225875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920261898135674692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1ccadb915084a4286e0c6ea0b9cd42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frequency: 6
-  _amplitude: 0.15
-  randomize: 1
+      - m_Target: {fileID: 6032981531403743282}
+        m_MethodName: Add
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
