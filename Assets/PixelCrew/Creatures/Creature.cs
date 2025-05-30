@@ -2,6 +2,7 @@
 using PixelCrew.Components.GoBased;
 using PixelCrew.Components;
 using UnityEngine;
+using PixelCrew.Components.Audio;
 
 namespace PixelCrew.Creatures
 {
@@ -28,6 +29,7 @@ namespace PixelCrew.Creatures
         protected Rigidbody2D Rigidbody;
         protected Vector2 Direction;
         protected Animator Animator;
+        protected PlaySoundsComponent Sounds;
         protected bool IsGrounded;
         private bool _isJumping;
 
@@ -41,6 +43,7 @@ namespace PixelCrew.Creatures
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
+            Sounds = GetComponent<PlaySoundsComponent>();
         }
 
         public void SetDirection(Vector2 direction)
@@ -95,10 +98,16 @@ namespace PixelCrew.Creatures
             if (IsGrounded)
             {
                 yVelocity = _jumpSpeed;
-                _particles.Spawn("Jump");
+                DoJumpVfx();
             }
 
             return yVelocity;
+        }
+
+        protected void DoJumpVfx()
+        {
+            _particles.Spawn("Jump");
+            Sounds.Play("Jump");
         }
 
         public void UpdateSpriteDirection(Vector2 direction)
@@ -124,11 +133,13 @@ namespace PixelCrew.Creatures
         public virtual void Attack()
         {
             Animator.SetTrigger(AttackKey);
+            Sounds.Play("Melee");
         }
 
         public void OnDoAttack()
         {
             _attackRange.Check();
+            _particles.Spawn("Slash");
         }
     }
 

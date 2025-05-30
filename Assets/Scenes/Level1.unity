@@ -5588,18 +5588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce47892e9c304344af437926c8431e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1244213857 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7383988877132864955, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 7383988875889848288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244213848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee8210dff5af78448dace5462ba1de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1337072601
 GameObject:
   m_ObjectHideFlags: 0
@@ -11733,39 +11721,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
         type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
       propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1882378950}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1244213852}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864898, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7383988877132864952, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
         type: 3}
       propertyPath: m_Name
@@ -11825,51 +11783,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
-      value: 9f5628d8-0766-4f96-9f5d-95f7a7a5a453
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
-      value: Hero/UseHealthPotion[/Keyboard/f]
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1244213857}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnUseHealthPotion
-      objectReference: {fileID: 0}
-    - target: {fileID: 7383988877132864957, guid: 1ef52d841f95d9d44964d4f5cfb674d7,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef52d841f95d9d44964d4f5cfb674d7, type: 3}

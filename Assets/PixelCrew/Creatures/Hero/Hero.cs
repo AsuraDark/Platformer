@@ -20,23 +20,29 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private AnimatorController _armed;
         [SerializeField] private AnimatorController _disarmed;
 
-
-        [Space] [Header("Particles")]
+        [Space][Header("Particles")]
         [SerializeField] private ParticleSystem _hitParticles;
+
+        [Space][Header("Super throw")]
+        [SerializeField] private Cooldown _superThrowCooldown;
+
+        [SerializeField] private int _superThrowParticles;
+        [SerializeField] private float _superThrowDelay;
 
         private static readonly int ThrowKey = Animator.StringToHash("throw");
         private static readonly int IsOnWall = Animator.StringToHash("is-on-wall");
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
+        private bool _superThrow;
 
         private GameSession _session;
+        private HealthComponent _health;
         private float _defaultGravityScale;
         private int CoinsCount => _session.Data.Inventory.Count("Coin");
         private int SwordCount => _session.Data.Inventory.Count("Sword");
         private int KeyCount => _session.Data.Inventory.Count("Key");
         private int PotionHealthCount => _session.Data.Inventory.Count("PotionHealth");
-        private int _healOfPotion = 5;
 
         protected override void Awake()
         {
@@ -45,7 +51,7 @@ namespace PixelCrew.Creatures.Hero
             _defaultGravityScale = Rigidbody.gravityScale;
         }
 
-         private void Start()
+        private void Start()
         {
             _session = FindObjectOfType<GameSession>();
             var health = GetComponent<HealthComponent>();
@@ -73,8 +79,6 @@ namespace PixelCrew.Creatures.Hero
         {
             _session.Data.Hp = currentHelth;
         }
-
-        
 
         protected override void Update()
         {
@@ -117,8 +121,8 @@ namespace PixelCrew.Creatures.Hero
         {
             if (!IsGrounded && _allowDoubleJump && !_isOnWall)
             {
-                _particles.Spawn("Jump");
                 _allowDoubleJump = false;
+                DoJumpVfx();
                 return _jumpSpeed;
             }
             return base.CalculateJumpVelocity(yVelocity);
@@ -128,7 +132,6 @@ namespace PixelCrew.Creatures.Hero
         {
             _session.Data.Inventory.Add(id, value);
         }
-
         public override void TakeDamage()
         {
             base.TakeDamage();
@@ -149,7 +152,6 @@ namespace PixelCrew.Creatures.Hero
             _hitParticles.gameObject.SetActive(true);
             _hitParticles.Play();
         }
-
         public void Interact()
         {
             _interactionCheck.Check();
@@ -178,21 +180,61 @@ namespace PixelCrew.Creatures.Hero
         {
             Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _disarmed;
         }
-        public void Death()
-        {
-            _session.Data.Hp = _session.FirstData.Hp;
-        }
 
         public void OnDoThrow()
         {
+            if (_superThrow)
+            {
+                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                StartCoroutine(DoSuperThrow(numThrows));
+            }
+            else
+            {
+                ThrowAndRemoveFromInventory();
+            }
+
+            _superThrow = false;
+        }
+        private IEnumerator DoSuperThrow(int numThrows)
+        {
+            for (int i = 0; i < numThrows; i++)
+            {
+                ThrowAndRemoveFromInventory();
+                yield return new WaitForSeconds(_superThrowDelay);
+            }
+        }
+
+        private void ThrowAndRemoveFromInventory()
+        {
+            Sounds.Play("Range");
             _particles.Spawn("Throw");
+            _session.Data.Inventory.Remove("Sword", 1);
+        }
+        public void StartThrowing()
+        {
+            _superThrowCooldown.Reset();
+        }
+
+        public void PerformThrowing()
+        {
+            if (!_throwCooldown.IsReady || SwordCount <= 1) return;
+
+            if (_superThrowCooldown.IsReady) _superThrow = true;
+
+            Animator.SetTrigger(ThrowKey);
+            _throwCooldown.Reset();
+        }
+
+        public void Death()
+        {
+            _session.Data.Hp = _session.FirstData.Hp;
         }
 
         public void Throw()
         {
             if (_throwCooldown.IsReady)
             {
-                if (SwordCount > 1)     
+                if (SwordCount > 1)
                 {
                     _session.Data.Inventory.Remove("Sword", 1);
                     Animator.SetTrigger(ThrowKey);
@@ -203,11 +245,12 @@ namespace PixelCrew.Creatures.Hero
 
         public void UseHealthPotion()
         {
-            var go = GetComponent<HealthComponent>();
-            if(PotionHealthCount > 0)
+            var potionCount = _session.Data.Inventory.Count("PotionHealth");
+            if (potionCount > 0)
             {
-                go.ModifyHealth(_healOfPotion);
-                _session.Data.Inventory.Remove("PotionHealth", 1);
+                Sounds.Play("health-up");
+                _health.ModifyHealth(5);
+                _session.Data.Inventory.Remove("HeathPotion", 1);
             }
         }
     }
