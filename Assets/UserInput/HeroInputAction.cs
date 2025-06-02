@@ -61,7 +61,7 @@ public class @HeroInputAction : IInputActionCollection, IDisposable
                 {
                     ""name"": ""UseHealthPotion"",
                     ""type"": ""Button"",
-                    ""id"": ""9f5628d8-0766-4f96-9f5d-95f7a7a5a453"",
+                    ""id"": ""60782d7f-08c0-4578-8b5c-7a28e64ea09f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -169,7 +169,7 @@ public class @HeroInputAction : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""94e02293-b2a6-4208-91b2-b4921c2ee746"",
+                    ""id"": ""17def8ad-bc0f-4014-9288-821cc8aa9a4a"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",

@@ -54,11 +54,11 @@ namespace PixelCrew.Creatures.Hero
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            var health = GetComponent<HealthComponent>();
+            _health = GetComponent<HealthComponent>();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
 
-            health.SetHealth(_session.Data.Hp);
+            _health.SetHealth(_session.Data.Hp);
             UpdateHeroWeapon();
 
             _session.FirstData.Hp = _session.Data.Hp;
@@ -246,11 +246,12 @@ namespace PixelCrew.Creatures.Hero
         public void UseHealthPotion()
         {
             var potionCount = _session.Data.Inventory.Count("PotionHealth");
+
             if (potionCount > 0)
             {
                 Sounds.Play("health-up");
                 _health.ModifyHealth(5);
-                _session.Data.Inventory.Remove("HeathPotion", 1);
+                _session.Data.Inventory.Remove("PotionHealth", 1);
             }
         }
     }

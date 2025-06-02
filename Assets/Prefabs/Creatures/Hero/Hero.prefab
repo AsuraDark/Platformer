@@ -104,7 +104,8 @@ AudioSource:
   m_GameObject: {fileID: 1392913458}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 050a79b896d86cb439a774b905ea1789,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 42cb6cc83afe6f7428ccb9ec0cc75524, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -277,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5423436186879361772}
   - component: {fileID: 6837481029798759343}
-  - component: {fileID: 9016176428086098035}
+  - component: {fileID: 3462862892575838180}
   m_Layer: 12
   m_Name: Vfx
   m_TagString: Untagged
@@ -308,7 +309,8 @@ AudioSource:
   m_GameObject: {fileID: 2071331297257226900}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 653b4f366f02f764cbdf4deab867588d,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -395,7 +397,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &9016176428086098035
+--- !u!81 &3462862892575838180
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5849,8 +5851,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9f5628d8-0766-4f96-9f5d-95f7a7a5a453
-    m_ActionName: Hero/UseHealthPotion[/Keyboard/f]
+    m_ActionId: 60782d7f-08c0-4578-8b5c-7a28e64ea09f
+    m_ActionName: Hero/UseHealthPotion[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -6037,3 +6039,5 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: aea565b8f02f2cc4799953afab88ca02, type: 3}
   - _id: Hurt
     _clip: {fileID: 8300000, guid: 33ad150817779bc438ec738fca951f49, type: 3}
+  - _id: health-up
+    _clip: {fileID: 8300000, guid: 04359d6278ac760449d0f4240f1ea2c0, type: 3}
