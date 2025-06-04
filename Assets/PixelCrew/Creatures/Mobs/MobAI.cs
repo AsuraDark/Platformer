@@ -28,6 +28,9 @@ namespace PixelCrew.Creatures.Mobs
         private bool _isDead;
         private Patrol _patrol;
 
+        public bool IsDead => _isDead;
+        public Animator Animators => _animator;
+
         private void Awake()
         {
             _particles = GetComponent<SpawnListComponent>();

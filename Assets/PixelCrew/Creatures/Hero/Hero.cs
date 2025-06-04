@@ -1,16 +1,15 @@
 ﻿using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.Health;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model;
-using System;
+using PixelCrew.Model.Data;
 
 namespace PixelCrew.Creatures.Hero
 {
-    public class Hero : Creature
+    public class Hero : Creature, ICanAddInInventory
     {
         [SerializeField] private CheckCircleOverlap _interactionCheck;
         [SerializeField] private LayerCheck _wallCheck;
