@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelCrew.Model.Definitions
@@ -17,20 +15,23 @@ namespace PixelCrew.Model.Definitions
                 if (itemDef.Id == id)
                     return itemDef;
             }
+
             return default;
         }
 
 #if UNITY_EDITOR
         public ItemDef[] ItemsForEditor => _items;
 #endif
+    }
 
-        [Serializable]
-        public struct ItemDef
-        {
-            [SerializeField] private string _id;
-            public string Id => _id;
+    [Serializable]
+    public struct ItemDef
+    {
+        [SerializeField] private string _id;
+        [SerializeField] private bool _isStackable;
+        public string Id => _id;
+        public bool IsStackable => _isStackable;
 
-            public bool IsVoid => string.IsNullOrEmpty(_id);
-        }
+        public bool IsVoid => string.IsNullOrEmpty(_id);
     }
 }

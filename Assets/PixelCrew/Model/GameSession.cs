@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using PixelCrew.Model.Data;
+using UnityEngine.SceneManagement;
 
 namespace PixelCrew.Model
 {
@@ -10,17 +11,27 @@ namespace PixelCrew.Model
         public PlayerData Data => _data;
         public PlayerData FirstData => _firstData;
 
+        private PlayerData _save;
+
         private void Awake()
         {
+            LoadHud();
+
             if(IsSessionExit())
             {
                 DestroyImmediate(gameObject);
             }
             else
             {
+                Save();
                 DontDestroyOnLoad(this);
             }
 
+        }
+
+        private void LoadHud()
+        {
+            SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
 
         private bool IsSessionExit()
@@ -32,6 +43,15 @@ namespace PixelCrew.Model
                     return true;
             }
             return false;
+        }
+        public void Save()
+        {
+            _save = _data.Clone();
+        }
+
+        public void LoadLastSave()
+        {
+            _data = _save.Clone();
         }
     }
 }

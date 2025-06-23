@@ -1952,11 +1952,13 @@ MonoBehaviour:
       _inventory:
       - Id: Sword
         Value: 2
-    Hp: 30
+    Hp:
+      _value: 10
   _firstData:
     _inventory:
       _inventory: []
-    Hp: 0
+    Hp:
+      _value: 10
 --- !u!4 &1075933694
 Transform:
   m_ObjectHideFlags: 0
@@ -4106,7 +4108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35efe9859bef6a4aba03981fe322f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
   _sounds: []
 --- !u!1 &2038570004
 GameObject:

@@ -8,6 +8,7 @@ TagManager:
   - Silver Coin
   - Enemy
   - Interactable
+  - SfxAudioSource
   layers:
   - Default
   - TransparentFX
