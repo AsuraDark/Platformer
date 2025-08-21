@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using PixelCrew.Utils;
 using UnityEngine;
 
 namespace PixelCrew.Components.GoBased
@@ -8,18 +7,20 @@ namespace PixelCrew.Components.GoBased
     {
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
-        [SerializeField] private bool _invertScale;
 
         [ContextMenu("Spawn")]
         public void Spawn()
         {
-            var instantiate = Instantiate(_prefab, _target.position, Quaternion.identity);
+            var instance = SpawnUtils.Spawn(_prefab, _target.position);
 
             var scale = _target.lossyScale;
-            scale.x *= _invertScale ? -1 : 1;
-            instantiate.transform.localScale = scale;
-            instantiate.SetActive(true);
+            instance.transform.localScale = scale;
+            instance.SetActive(true);
+        }
+
+        public void SetPrefab(GameObject prefab)
+        {
+            _prefab = prefab;
         }
     }
 }
-

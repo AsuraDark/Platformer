@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace PixelCrew.Components.LevelManagement
+namespace PixelCrew.Components
 {
     public class ProbabilityDropComponent : MonoBehaviour
     {
@@ -28,7 +26,7 @@ namespace PixelCrew.Components.LevelManagement
             var itemsToDrop = new GameObject[_count];
             var itemCount = 0;
             var total = _drop.Sum(dropData => dropData.Probability);
-            var sortedDrop = _drop.OrderBy(dropData => dropData.Probability);
+            var sortedDrop = _drop.OrderBy(dropData => dropData.Probability).ToArray();
 
             while (itemCount < _count)
             {
@@ -45,21 +43,26 @@ namespace PixelCrew.Components.LevelManagement
                     }
                 }
             }
-            _onDropCalculated.Invoke(itemsToDrop);
-        }
-    }
 
-    [Serializable]
-    public class DropData
-    {
-        public GameObject Drop;
-        [Range(0f, 100f)] public float Probability;
+            _onDropCalculated?.Invoke(itemsToDrop);
+        }
+
+
+        [Serializable]
+        public class DropData
+        {
+            public GameObject Drop;
+            [Range(0f, 100f)] public float Probability;
+        }
+
+        public void SetCount(int count)
+        {
+            _count = count;
+        }
     }
 
     [Serializable]
     public class DropEvent : UnityEvent<GameObject[]>
     {
-
     }
 }
-

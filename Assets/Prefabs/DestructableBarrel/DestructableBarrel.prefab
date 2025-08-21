@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5950063712071489176}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &347047462
 MonoBehaviour:
@@ -45,7 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 347047461}
   _prefab: {fileID: 935953077}
-  _invertScale: 0
 --- !u!1 &935953077
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,8 +54,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935953080}
-  - component: {fileID: 935953079}
   - component: {fileID: 935953078}
+  - component: {fileID: 2000913071}
   m_Layer: 8
   m_Name: Drop
   m_TagString: Untagged
@@ -76,41 +75,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5950063712071489176}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &935953079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935953077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4062dfc533e6d4fa92cc3f2edaa23c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _count: 10
-  _drop:
-  - Drop: {fileID: 1126546576532161477, guid: 417f8660eb240114aa3d338964dbd2f1, type: 3}
-    Probability: 80
-  - Drop: {fileID: 920261898135674692, guid: 8880c99dd7c0ade49bc85f39c87beeef, type: 3}
-    Probability: 20
-  _onDropCalculated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 935953078}
-        m_MethodName: StartDrop
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _spawnOnEnable: 1
 --- !u!114 &935953078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +93,37 @@ MonoBehaviour:
   _sectorRotation: 0
   _waitTime: 0.1
   _speed: 6
-  _itemPerBurst: 2
+--- !u!114 &2000913071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935953077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9522b280f5190a459cd9bb70b254b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 3
+  _drop:
+  - Drop: {fileID: 0}
+    Probability: 100
+  _onDropCalculated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 935953078}
+        m_MethodName: StartDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _spawnOnEnable: 1
 --- !u!1 &5950063712071489173
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,8 +159,8 @@ Transform:
   m_LocalPosition: {x: -3, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 935953080}
   - {fileID: 347047461}
+  - {fileID: 935953080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -281,8 +277,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
+            m_StringArgument: destroyed
+            m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 5950063712071489175}
           m_MethodName: DestroyObject
@@ -293,7 +289,7 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &5950063712071489175
 MonoBehaviour:
@@ -375,7 +371,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &5950063712071489178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -416,7 +412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 5950063712071489176}
   _prefab: {fileID: 5171023361751425674, guid: c3d6ed4ca5e2c4b4fad111d0e6d3c1a9, type: 3}
-  _invertScale: 0
 --- !u!114 &407874204
 MonoBehaviour:
   m_ObjectHideFlags: 0

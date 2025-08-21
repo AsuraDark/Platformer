@@ -1,12 +1,8 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
-namespace PixelCrew.Model.Definitions.Editor
+namespace PixelCrew.Model.Definitions.Repositories.Items.Editor
 {
     [CustomPropertyDrawer(typeof(InventoryIdAttribute))]
     public class InventoryIdAttributeDrawer : PropertyDrawer
@@ -22,6 +18,7 @@ namespace PixelCrew.Model.Definitions.Editor
 
             var index = Mathf.Max(ids.IndexOf(property.stringValue), 0);
             index = EditorGUI.Popup(position, property.displayName, index, ids.ToArray());
-            property.stringValue = ids[index];        }
+            property.stringValue = ids[index];
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
 
 namespace PixelCrew.Model.Data.Properties
@@ -14,15 +10,16 @@ namespace PixelCrew.Model.Data.Properties
         {
             Init();
         }
-        protected override float Read(float defaultValue)
-        {
-            return PlayerPrefs.GetFloat(Key, defaultValue);
-        }
 
         protected override void Write(float value)
         {
             PlayerPrefs.SetFloat(Key, value);
             PlayerPrefs.Save();
+        }
+
+        protected override float Read(float defaultValue)
+        {
+            return PlayerPrefs.GetFloat(Key, defaultValue);
         }
     }
 }

@@ -1,21 +1,21 @@
 ﻿using System.Collections;
+using PixelCrew.Utils;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 using Random = UnityEngine.Random;
 
-namespace PixelCrew
+namespace PixelCrew.Components.GoBased
 {
     public class RandomSpawner : MonoBehaviour
     {
         [Header("Spawn bound:")]
-        [SerializeField] private float _sectorAngle = 60;
+        [SerializeField]
+        private float _sectorAngle = 60;
 
         [SerializeField] private float _sectorRotation;
 
         [SerializeField] private float _waitTime = 0.1f;
         [SerializeField] private float _speed = 6;
-        [SerializeField] private int _itemPerBurst = 2;
 
         private Coroutine _routine;
 
@@ -26,22 +26,26 @@ namespace PixelCrew
             _routine = StartCoroutine(StartSpawn(items));
         }
 
+        public void DropImmediate(GameObject[] items)
+        {
+            foreach (var item in items)
+            {
+                Spawn(item);
+            }
+        }
+
         private IEnumerator StartSpawn(GameObject[] particles)
         {
             for (var i = 0; i < particles.Length; i++)
             {
-                for (var j = 0; j < _itemPerBurst && i < particles.Length; j++) 
-                {
-                    Spawn(particles[i]);
-                    i++;
-                }
-
+                Spawn(particles[i]);
                 yield return new WaitForSeconds(_waitTime);
             }
         }
+
         private void Spawn(GameObject particle)
         {
-            var instance = Instantiate(particle, transform.position, Quaternion.identity);
+            var instance = SpawnUtils.Spawn(particle, transform.position);
             var rigidBody = instance.GetComponent<Rigidbody2D>();
 
             var randomAngle = Random.Range(0, _sectorAngle);
@@ -74,8 +78,10 @@ namespace PixelCrew
         private Vector3 GetUnitOnCircle(float angleDegrees)
         {
             var angleRadians = angleDegrees * Mathf.PI / 180.0f;
+
             var x = Mathf.Cos(angleRadians);
             var y = Mathf.Sin(angleRadians);
+
             return new Vector3(x, y, 0);
         }
 
@@ -92,10 +98,7 @@ namespace PixelCrew
         private void TryStopRoutine()
         {
             if (_routine != null)
-            {
                 StopCoroutine(_routine);
-                _routine = null;
-            }
         }
     }
 }

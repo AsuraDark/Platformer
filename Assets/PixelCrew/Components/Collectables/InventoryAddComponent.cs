@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PixelCrew.Creatures.Hero;
 using PixelCrew.Model.Data;
 using PixelCrew.Model.Definitions;
+using PixelCrew.Model.Definitions.Repositories.Items;
 using PixelCrew.Utils;
 using UnityEngine;
 

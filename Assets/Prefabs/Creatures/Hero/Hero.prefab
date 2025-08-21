@@ -140,6 +140,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6359c790684754f994904297994642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1582340022762047611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5975928823401677861}
+  - component: {fileID: 6368726171679119250}
+  - component: {fileID: 7383988875889848291}
+  m_Layer: 12
+  m_Name: HitDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5975928823401677861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582340022762047611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7383988877132864954}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6368726171679119250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582340022762047611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9522b280f5190a459cd9bb70b254b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 10
+  _drop:
+  - Drop: {fileID: 0}
+    Probability: 100
+  _onDropCalculated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7383988875889848291}
+        m_MethodName: StartDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _spawnOnEnable: 0
+--- !u!114 &7383988875889848291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582340022762047611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d089fdfca939a478ef7516d3cceb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sectorAngle: 220
+  _sectorRotation: 0
+  _waitTime: 0.1
+  _speed: 3
 --- !u!1 &2071331297257226900
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +269,7 @@ GameObject:
   - component: {fileID: 2743581942424466885}
   - component: {fileID: 1445409747688392881}
   m_Layer: 12
-  m_Name: ThrowSwordSpawnPosition
+  m_Name: ThrowSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -224,7 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 2743581942424466885}
   _prefab: {fileID: 6552538220576858967, guid: bb4e315659255db479b6f69a1e32cb04, type: 3}
-  _invertScale: 0
 --- !u!1 &7383988875950977316
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988875950977317}
   _prefab: {fileID: 6552538220576858967, guid: 4b17c8ff5a4052e4383631531e68eee9, type: 3}
-  _invertScale: 0
 --- !u!1 &7383988875956097982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5205,7 +5282,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988876203357321}
   _prefab: {fileID: 816314217125207657, guid: e053eff6d15849b49b13b2686c4c9324, type: 3}
-  _invertScale: 0
 --- !u!1 &7383988876226983177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +5327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988876226983178}
   _prefab: {fileID: 2554025023731977619, guid: 99e1e6e8bdab1a340bd166452aa5aa46, type: 3}
-  _invertScale: 0
 --- !u!1 &7383988876944234568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,7 +5372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7383988876944234569}
   _prefab: {fileID: 4734688311181985127, guid: 23bb404cf1c20e04eac8c3b0a026bd97, type: 3}
-  _invertScale: 0
 --- !u!1 &7383988877077301745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5410,6 +5484,7 @@ Transform:
   - {fileID: 1530801186}
   - {fileID: 2743581942424466885}
   - {fileID: 5423436186879361772}
+  - {fileID: 5975928823401677861}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5510,6 +5585,8 @@ MonoBehaviour:
     _value: 1
   _superThrowParticles: 1
   _superThrowDelay: 1
+  _hitDrop: {fileID: 6368726171679119250}
+  _throwSpawner: {fileID: 1445409747688392881}
 --- !u!114 &7383988877132864957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5614,7 +5691,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7383988877132864955}
-        m_MethodName: OnUseHealthPotion
+        m_MethodName: OnNextItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5802,7 +5879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35efe9859bef6a4aba03981fe322f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
   _sounds:
   - _id: Jump
     _clip: {fileID: 8300000, guid: 93600fc0311a1ac418c46d3792c6b3ef, type: 3}

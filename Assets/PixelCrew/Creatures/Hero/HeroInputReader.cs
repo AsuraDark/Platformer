@@ -41,15 +41,15 @@ namespace PixelCrew.Creatures.Hero
 
             if (context.canceled)
             {
-                _hero.PerformThrowing();
+                _hero.UseInventory();
             }
         }
 
-        public void OnUseHealthPotion(InputAction.CallbackContext context)
+        public void OnNextItem(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                _hero.UseHealthPotion();
+                _hero.NextItem();
             }
         }
     }

@@ -1,14 +1,20 @@
-﻿using UnityEngine;
+using PixelCrew.Model.Definitions.Repositories;
+using PixelCrew.Model.Definitions.Repositories.Items;
+using UnityEngine;
 
 namespace PixelCrew.Model.Definitions
 {
     [CreateAssetMenu(menuName = "Defs/DefsFacade", fileName = "DefsFacade")]
     public class DefsFacade : ScriptableObject
     {
-        [SerializeField] private InventoryItemsDef _items;
+        [SerializeField] private ItemsRepository _items;
+        [SerializeField] private ThrowableRepository _throwableItems;
+        [SerializeField] private PotionRepository _potions;
         [SerializeField] private PlayerDef _player;
 
-        public InventoryItemsDef Items => _items;
+        public ItemsRepository Items => _items;
+        public ThrowableRepository Throwable => _throwableItems;
+        public PotionRepository Potions => _potions;
         public PlayerDef Player => _player;
 
         private static DefsFacade _instance;

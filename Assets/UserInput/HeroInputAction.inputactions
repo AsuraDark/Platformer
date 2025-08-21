@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "UseHealthPotion",
+                    "name": "NextItem",
                     "type": "Button",
                     "id": "60782d7f-08c0-4578-8b5c-7a28e64ea09f",
                     "expectedControlType": "Button",
@@ -157,11 +157,11 @@
                 {
                     "name": "",
                     "id": "17def8ad-bc0f-4014-9288-821cc8aa9a4a",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseHealthPotion",
+                    "action": "NextItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
